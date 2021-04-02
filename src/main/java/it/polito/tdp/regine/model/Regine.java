@@ -39,7 +39,7 @@ public class Regine {
 				if(!parziale.contains(livello) && livello < N) {
 					if(this.valida(parziale, colonna, livello)) {
 						parziale.set(colonna, livello);
-						System.out.println(""+colonna+","+livello);
+						//System.out.println(""+colonna+","+livello);
 						
 						if(cerca(parziale, livello+1))
 							return true;

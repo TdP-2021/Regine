@@ -8,8 +8,12 @@ public class TestRegine {
 		List<Integer> regine;
 		
 		regine = r.disponiRegine();
-		System.out.println("(c, r)");
-		for(int i=0; i<7; i++)
-			System.out.println("(" + i + ", " + regine.get(i) + ")");
+		if(regine != null) {
+			System.out.println("(c, r)");
+			for(int i=0; i<7; i++) 
+				System.out.println("("+i+", "+regine.get(i)+")");
+		}
+		else
+			System.out.println("Problema senza soluzione");
 	}
 }
