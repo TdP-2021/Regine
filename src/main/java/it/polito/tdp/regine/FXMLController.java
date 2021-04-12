@@ -72,8 +72,8 @@ public class FXMLController {
 
 		// Risolvi il problema ricorsivo
 		regine = new Regine();
-		List<Integer> soluzione = regine.disponiRegine(N);
-
+		//List<Integer> soluzione = regine.disponiRegine(N);
+		List<Integer> soluzione = regine.risolvi(N);
 		// "Dipingi" la soluzione
 		if (soluzione != null) {
 			for (int row = 0; row < N; row++) {
@@ -89,6 +89,6 @@ public class FXMLController {
 	void initialize() {
 		assert spinN != null : "fx:id=\"spinN\" was not injected: check your FXML file 'Scene.fxml'.";
 		assert paneScacchiera != null : "fx:id=\"paneScacchiera\" was not injected: check your FXML file 'Scene.fxml'.";
-		spinN.setValueFactory(new IntegerSpinnerValueFactory(2, 8));
+		spinN.setValueFactory(new IntegerSpinnerValueFactory(2, 20));
 	}
 }
