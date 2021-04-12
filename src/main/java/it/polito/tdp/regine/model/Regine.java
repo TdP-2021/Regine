@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Regine {
 	private int N;
-	private List<Integer> soluzione;
+	private List<List<Integer>> soluzioni;
 	/*public List<Integer> disponiRegine(int N) {
 		this.N = N;
 		List<Integer> risultato = new ArrayList<Integer>();
@@ -28,23 +28,22 @@ public class Regine {
 	// [0]
 	//     [0, 2]
 	//            [0, 2, 1]
-	public List<Integer> risolvi(int N){
+	public List<List<Integer>> risolvi(int N){
 		this.N = N;
 		List<Integer> parziale = new ArrayList<Integer>();
-		this.soluzione = null;
+		this.soluzioni = new ArrayList<>();
 		
 		cerca(parziale, 0);
 		
-		return this.soluzione;
+		return this.soluzioni;
 	}
 	
 	//cerca == true : trovato; cerca == false : cerca ancora
-	private boolean cerca(List<Integer> parziale, int livello) {
+	private void cerca(List<Integer> parziale, int livello) {
 		if(livello == N) { 
 			//caso terminale
 			//System.out.println(parziale);
-			this.soluzione = new ArrayList<Integer>(parziale);
-			return true;
+			this.soluzioni.add(new ArrayList<>(parziale));
 		}
 		else {
 			for(int colonna=0; colonna<N; colonna++) {
@@ -58,14 +57,11 @@ public class Regine {
 				if(posValida(parziale, colonna)) {
 					parziale.add(colonna);
 					
-					boolean trovato = cerca(parziale, livello+1);
-					if(trovato)
-						return true;
+					cerca(parziale, livello+1);
 					
 					parziale.remove(parziale.size()-1); //backtracking
 				}
 			}
-			return false;
 		}
 	}
 	private boolean posValida(List<Integer> parziale, int colonna) {
