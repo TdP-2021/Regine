@@ -6,11 +6,11 @@ public class TestRegine {
 	public static void main(String args[]) {
 		Regine r = new Regine();
 		List<Integer> regine;
-		
-		regine = r.disponiRegine();
+		int N = 7;
+		regine = r.disponiRegine(N);
 		if(regine != null) {
 			System.out.println("(c, r)");
-			for(int i=0; i<7; i++) 
+			for(int i=0; i<N; i++) 
 				System.out.println("("+i+", "+regine.get(i)+")");
 		}
 		else

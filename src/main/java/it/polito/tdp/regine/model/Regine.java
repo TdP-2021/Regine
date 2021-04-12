@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Regine {
-	final static int N = 7;
 	
-	public List<Integer> disponiRegine() {
+	public List<Integer> disponiRegine(int N) {
 		List<Integer> risultato = new ArrayList<Integer>();
 		for(int i=0; i<N; i++)
 			risultato.add(-1);
-		if(cerca(risultato, 0))
+		if(cerca(N, risultato, 0))
 			return risultato;
 		else
 			return null;
@@ -28,7 +27,7 @@ public class Regine {
 	//     [0, 2]
 	//            [0, 2, 1]
 	
-	private boolean cerca(List<Integer>parziale, int livello) {
+	private boolean cerca(int N, List<Integer>parziale, int livello) {
 		if(livello == N) {
 			return true;
 		}
@@ -37,11 +36,11 @@ public class Regine {
 				// if la possa nella casella [livello][colonna] è valida
 				// se sì, aggiungi a parziale e fai ricorsione
 				if(!parziale.contains(livello) && livello < N) {
-					if(this.valida(parziale, colonna, livello)) {
+					if(this.valida(N, parziale, colonna, livello)) {
 						parziale.set(colonna, livello);
 						//System.out.println(""+colonna+","+livello);
 						
-						if(cerca(parziale, livello+1))
+						if(cerca(N, parziale, livello+1))
 							return true;
 						
 						parziale.set(colonna, -1);
@@ -52,7 +51,7 @@ public class Regine {
 		}
 	}
 	
-	private boolean valida(List<Integer>parziale, int colonna, int livello) {
+	private boolean valida(int N, List<Integer>parziale, int colonna, int livello) {
 		//controllo colonna
 		for(int i=0; i<livello; i++)
 			if(parziale.get(colonna) == i)
